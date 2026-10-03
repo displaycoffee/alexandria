@@ -31,7 +31,7 @@
 		"typescript-eslint": "^8.70.0"
 	},
 	"dependencies": {
-		"@displaycoffee/scripts": "^1.0.0",
+		"@displaycoffee/scripts": "^1.1.0",
 		"@iconify-json/lucide": "^1.2.135",
 		"@iconify/react": "^6.0.2",
 		"@iconify/utils": "^3.1.7",
