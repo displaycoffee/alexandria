@@ -1,24 +1,17 @@
-/* Packages */
-import 'server-only';
-import { Icon as IconifyIcon } from '@iconify/react';
-import { getIconData } from '@iconify/utils';
-import { icons as lucide } from '@iconify-json/lucide';
-
 /* Styles */
 import './styles/icons.scss';
 
+/* Packages */
+import { Icon as IconifyIcon } from '@iconify/react';
+
 /* Scripts */
 import type { IconsProps } from './scripts/icons-types';
+import { icons } from '@/_core/data/icons';
 
-/* Note: this is a Server Component so the full Lucide set stays on the server and only the icon's SVG data is sent to the browser. */
-/* To use an icon inside a Client Component, render <Icon /> in a Server Component and pass it down as a prop or children. */
+/* Note: icons.ts only holds the icons listed in icons.json, so this works in Server and Client Components */
 export const Icon = (props: IconsProps) => {
-	const { icon, size } = props;
+	const { name, size } = props;
 	const iconClass = 'icon-wrapper';
-	const iconData = getIconData(lucide, icon);
-
-	// Fail loudly so a misspelled icon name doesn't silently render nothing
-	if (!iconData) throw new Error(`Icon "${icon}" not found in @iconify-json/lucide`);
 
 	// Create icon classes
 	const iconClasses = [iconClass];
@@ -26,7 +19,7 @@ export const Icon = (props: IconsProps) => {
 
 	return (
 		<div className={iconClasses.join(' ')}>
-			<IconifyIcon icon={iconData} ssr className={'icon'} aria-hidden={'true'} focusable={'false'} />
+			<IconifyIcon icon={icons[name]} ssr className={'icon'} aria-hidden={'true'} focusable={'false'} />
 		</div>
 	);
 };

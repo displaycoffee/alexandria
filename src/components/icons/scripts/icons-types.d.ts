@@ -1,6 +1,6 @@
 /* Type definitions */
 type Icons = {
-	icon: string;
+	name: IconNameType;
 	size?: string;
 };
 
