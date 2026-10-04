@@ -6,6 +6,7 @@ import { head } from '@/layout/head/scripts/head';
 
 /* Components */
 import { PreloadedStyles } from '@/layout/head/Head';
+import { Container } from '@/layout/container/Container';
 
 export const metadata = head.metadata.all;
 export const viewport = head.metadata.viewport;
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
 			<head>
 				<PreloadedStyles />
 			</head>
-			<body className="scrollbar">{children}</body>
+			<body className="scrollbar">
+				<Container>{children}</Container>
+			</body>
 		</html>
 	);
 }
