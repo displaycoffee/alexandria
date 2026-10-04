@@ -3,13 +3,13 @@
 @use '@displaycoffee/styles/mixins';
 @use '../../../_core/styles/_theme';
 
-//// HOME
+//// INDEX
 //// --------------------------------------------------------------------------
 
 	// Style block
 	// To-do: this class might need to change
 
-	.page-home {
+	.page-index {
 		.dropdown {
 			max-width: 400px;
 		}
