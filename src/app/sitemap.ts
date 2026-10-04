@@ -5,6 +5,7 @@ import type { MetadataRoute } from 'next';
 import { site } from '@/_core/data/site';
 
 /* Note: add new pages here, or build this list from your data for dynamic routes */
+// To-do: do I need to do something here once navigation is built?
 const routes: string[] = ['/'];
 
 export default function sitemap(): MetadataRoute.Sitemap {

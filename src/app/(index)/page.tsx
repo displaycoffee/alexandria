@@ -1,3 +1,6 @@
+/* Styles */
+import './styles/index.scss';
+
 /* Components */
 import { Icon } from '@/components/icons/Icons';
 

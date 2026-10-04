@@ -5,6 +5,11 @@ import type themeJson from '../tokens/theme.json';
 import type { icons } from '../data/icons';
 
 /* Type definitions */
+type AppError = {
+	error: Error & { digest?: string };
+	retry: () => void;
+};
+
 type Events = SyntheticEvent | Event;
 
 type IconName = keyof typeof icons;
@@ -71,6 +76,8 @@ declare global {
 	type VariablesType = Variables;
 
 	// Declare global prop types
+	type AppErrorProps = AppError;
+
 	type ObjectPrimitiveProps = ObjectPrimitive;
 }
 

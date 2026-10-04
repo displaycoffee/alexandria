@@ -40,7 +40,7 @@ export const head = {
 			metadataBase: new URL(site.url),
 			title: {
 				default: site.name,
-				template: `%s | ${site.name}`,
+				template: `${site.name} - %s`,
 			},
 			description: site.description,
 			openGraph: {

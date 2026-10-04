@@ -1,0 +1,16 @@
+// Local Sass modules
+@use '@displaycoffee/styles/functions';
+@use '@displaycoffee/styles/mixins';
+@use '../../../_core/styles/_theme';
+
+//// HOME
+//// --------------------------------------------------------------------------
+
+	// Style block
+	// To-do: this class might need to change
+
+	.page-home {
+		.dropdown {
+			max-width: 400px;
+		}
+	}
