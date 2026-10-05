@@ -3,7 +3,7 @@ import './styles/navigation.scss';
 
 /* Packages */
 import { Fragment } from 'react';
-import { Link } from '@tanstack/react-router';
+import Link from 'next/link';
 
 /* Scripts */
 import type { NavigationComponentProps, NavigationItemComponentProps } from './scripts/navigation-types';
@@ -69,10 +69,10 @@ export const NavigationListItem = (props: NavigationItemComponentProps) => {
 		<li className="navigation-list-item">
 			{nav.isRoute ? (
 				<Link
-					to={nav.url}
+					href={nav.url}
 					onClick={disableTransition ? undefined : (e) => handleTransition(e, nav.url)}
 					className={navigationLinkClass}
-					activeProps={{ className: `${navigationLinkClass}-active` }}
+					// activeProps={{ className: `${navigationLinkClass}-active` }}
 				>
 					{nav.label}
 				</Link>

@@ -10,7 +10,7 @@ import type { ContainerProps, ContainerLayoutProps } from './scripts/container-t
 // import { useRespond } from '@displaycoffee/scripts/hooks';
 // import { useAvailableMinHeight, useBodyClass } from '@displaycoffee/scripts/hooks-tanstack';
 // import { useAppContext } from '../../context/scripts/context-hooks';
-// import { navigationHeader } from '../../components/navigation/scripts/navigation';
+//import { navigationHeader } from '@/components/navigation/scripts/navigation';
 
 /* Components */
 import { ContainerBody, ContainerMain } from './ContainerClient';
@@ -22,7 +22,6 @@ import { Header } from '@/layout/header/Header';
 import { Content } from '@/layout/content/Content';
 import { Sidebar } from '@/layout/sidebar/Sidebar';
 import { Footer } from '@/layout/footer/Footer';
-// import { Portal } from '../../targets/portal/Portal';
 
 export const Container = (props: ContainerProps) => {
 	const { children } = props;
