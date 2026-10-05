@@ -6,7 +6,7 @@
 	"keywords": [],
 	"author": "displaycoffee",
 	"license": "ISC",
-	"homepage": "https://alexandria-three.vercel.app",
+	"homepage": "https://alexandria.display.coffee",
 	"scripts": {
 		"generate:icons": "alexandria icons",
 		"generate:tokens": "tokens-generate",

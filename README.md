@@ -1,6 +1,6 @@
 # Alexandria - version 0.1.0
 
-Next.js-based framework to create projects. Like [Burmecia](https://github.com/displaycoffee/burmecia), its React / Vite sibling, it contains very basic styles so that the template may be used as a boilerplate to create something better. [Preview here.](https://alexandria-three.vercel.app)
+Next.js-based framework to create projects. Like [Burmecia](https://github.com/displaycoffee/burmecia), its React / Vite sibling, it contains very basic styles so that the template may be used as a boilerplate to create something better. [Preview here.](https://alexandria.display.coffee)
 
 This is named after the kingdom in the game Final Fantasy IX -- home to Princess Garnet and the castle at the center of the story.
 
