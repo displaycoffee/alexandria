@@ -2,7 +2,7 @@
 import './styles/container.scss';
 
 /* Packages */
-import type { ContainerProps } from './scripts/container-types';
+import type { ContainerProps, ContainerLayoutProps } from './scripts/container-types';
 // import { useRef } from 'react';
 // import { Link, useLocation } from '@tanstack/react-router';
 
@@ -16,7 +16,7 @@ import type { ContainerProps } from './scripts/container-types';
 import { ContainerBody, ContainerMain } from './ContainerClient';
 // import { ErrorBoundary } from '../../components/error-boundary/ErrorBoundary';
 // import { Navigation } from '../../components/navigation/Navigation';
-// import { ButtonScroll } from '../../components/forms/Forms';
+import { ButtonScroll } from '@/components/forms/FormsClient';
 // import { Slideout } from '../../components/slideout/Slideout';
 import { Header } from '@/layout/header/Header';
 import { Content } from '@/layout/content/Content';
@@ -24,18 +24,13 @@ import { Sidebar } from '@/layout/sidebar/Sidebar';
 import { Footer } from '@/layout/footer/Footer';
 // import { Portal } from '../../targets/portal/Portal';
 
-/* Pages that should exclude the sidebar */
-//const excludeSidebar: string[] = ['/page-two'];
-
 export const Container = (props: ContainerProps) => {
 	const { children } = props;
 	// const { theme } = useAppContext();
 	// const location = useLocation();
 	// const isDesktop = useRespond(theme.breakpoints.md);
-	// const sidebar = !excludeSidebar.includes(location.pathname);
 	// const mainRef = useRef<HTMLElement>(null);
 	// useAvailableMinHeight(mainRef);
-	const sidebar = true;
 
 	// // Slideout options
 	// const slideoutOptions = {
@@ -61,16 +56,29 @@ export const Container = (props: ContainerProps) => {
 				</Slideout>
 			)} */}
 
-			<ContainerMain>
-				<Content>{children}</Content>
-
-				<Sidebar show={sidebar} />
-			</ContainerMain>
+			<ContainerMain>{children}</ContainerMain>
 
 			<Footer />
-			{/* 
 
-			<ButtonScroll target={'#index'} label={'Scroll to top'} /> */}
+			<ButtonScroll target={'#index'} label={'Scroll to top'} />
 		</div>
+	);
+};
+
+export const ContainerFull = (props: ContainerLayoutProps) => {
+	const { children } = props;
+
+	return <Content>{children}</Content>;
+};
+
+export const ContainerSidebar = (props: ContainerLayoutProps) => {
+	const { children } = props;
+
+	return (
+		<>
+			<Content>{children}</Content>
+
+			<Sidebar />
+		</>
 	);
 };

@@ -1,4 +1,4 @@
 {
 	"$description": "Icon names used in this project, grouped by Iconify set prefix (each needs its @iconify-json/<prefix> package as a devDependency). Lucide names (https://lucide.dev/icons) are used as-is, e.g. <Icon name={'x'} />, and other sets as prefix:name, e.g. <Icon name={'mdi:home'} />. scripts/icons-generate.mjs builds icons.ts from this list on dev / build, so only these icons are bundled. npm run dev rebuilds it automatically when this file changes.",
-	"lucide": ["circle-alert", "circle-check", "circle-x", "house", "info"]
+	"lucide": ["check", "chevron-down", "circle-alert", "circle-check", "circle-x", "dot", "heart", "house", "info", "sliders-vertical", "star", "x"]
 }

@@ -1,6 +1,3 @@
-/* Styles */
-import '@/_core/styles/global.scss';
-
 /* Scripts */
 import { head } from '@/layout/head/scripts/head';
 

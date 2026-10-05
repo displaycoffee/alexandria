@@ -13,7 +13,7 @@ import { context } from '@/context/scripts/context';
 import { blocks } from './scripts/blocks';
 
 /* Components */
-//import { ButtonScroll } from '../forms/Forms';
+import { ButtonScroll } from '@/components/forms/FormsClient';
 
 export const Section = (props: SectionProps) => {
 	const { children, className: propClassName, hasScroll = true, id, target = '#index', title } = props;
@@ -37,8 +37,7 @@ export const Section = (props: SectionProps) => {
 
 			{hasScroll ? (
 				<div className="section-button">
-					{/* To-do: add button scroll */}
-					{/* <ButtonScroll target={target} label={'Back to top'} /> */}
+					<ButtonScroll target={target} label={'Back to top'} />
 				</div>
 			) : null}
 		</section>

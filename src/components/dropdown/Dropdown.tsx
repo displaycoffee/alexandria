@@ -1,3 +1,5 @@
+'use client';
+
 /* Styles */
 import './styles/dropdown.scss';
 
