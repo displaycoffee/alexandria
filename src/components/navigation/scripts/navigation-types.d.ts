@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 type NavigationComponent = {
 	data: NavigationMap;
 	disableTransition?: boolean;
+	hideMobile?: boolean;
 	label: string;
 };
 
@@ -13,6 +14,13 @@ type NavigationItemComponent = {
 	disableTransition: boolean;
 	nav: NavigationFlatItem;
 	navigationLinkClass: string;
+};
+
+type NavigationLinkComponent = {
+	className: string;
+	disableTransition: boolean;
+	href: string;
+	label: string;
 };
 
 type NavigationFlatItem = {
@@ -62,3 +70,5 @@ export type NavigationMapItemOptionsType = NavigationMapItemOptions;
 export type NavigationComponentProps = NavigationComponent;
 
 export type NavigationItemComponentProps = NavigationItemComponent;
+
+export type NavigationLinkComponentProps = NavigationLinkComponent;

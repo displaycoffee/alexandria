@@ -6,6 +6,7 @@ type Slideout = {
 	children?: ReactNode;
 	options: {
 		direction?: string;
+		hideDesktop?: boolean;
 		id?: string;
 		label: string;
 		width?: string;

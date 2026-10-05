@@ -64,17 +64,13 @@
 	.scrollbar {
 		@include mixins.scrollbar('&', $base-helpers-scrollbar-width, $base-helpers-scrollbar-height, $base-helpers-color-01, $base-helpers-color-02);
 	}
-	.hide-mobile {
-		display: none;
-	}
-	.hide-desktop {
-		display: block;
+	@include mixins.respond(theme.$breakpoint-md - 1, max-width) {
+		html body .hide-mobile {
+			display: none;
+		}
 	}
 	@include mixins.respond(theme.$breakpoint-md) {
-		.hide-mobile {
-			display: block;
-		}
-		.hide-desktop {
+		html body .hide-desktop {
 			display: none;
 		}
 	}

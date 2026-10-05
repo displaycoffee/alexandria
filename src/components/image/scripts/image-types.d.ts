@@ -1,5 +1,6 @@
 /* Packages */
-import type { HTMLAttributes, ImgHTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
+import type { ImageProps as NextImageProps } from 'next/image';
 
 /* Type definitions */
 type Image = {
@@ -15,12 +16,19 @@ type Image = {
 	wrapperClasses?: string[];
 };
 
-type ImageAttributes = ImgHTMLAttributes<HTMLImageElement>;
+type ImageAttributes = Omit<NextImageProps, 'alt' | 'src'>;
+
+type ImageError = {
+	image: string;
+	src: string;
+};
 
 type WrapperAttributes = HTMLAttributes<HTMLDivElement>;
 
 /* Export types */
 export type ImageAttributesType = ImageAttributes;
+
+export type ImageErrorType = ImageError;
 
 export type WrapperAttributesType = WrapperAttributes;
 

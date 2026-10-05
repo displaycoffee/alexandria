@@ -8,7 +8,8 @@ import { useRef, useState } from 'react';
 
 /* Scripts */
 import type { SlideoutProps, SlideoutTouchType, SlideoutTouchRefType } from './scripts/slideout-types';
-import { useFormattedId } from '@displaycoffee/scripts/hooks';
+import { useFormattedId, useRespond } from '@displaycoffee/scripts/hooks';
+import { context } from '@/context/scripts/context';
 import { slideout } from './scripts/slideout';
 
 /* Components */
@@ -22,7 +23,15 @@ export const Slideout = (props: SlideoutProps) => {
 	const fallbackId = useFormattedId();
 	const id = `slideout-${options?.id ?? fallbackId}`;
 	const title = `${id}-title`;
+	const hideDesktop = typeof options?.hideDesktop == 'boolean' && options.hideDesktop === true;
+	const slideoutClass = hideDesktop ? ' hide-desktop' : '';
 	const [isOpen, setIsOpen] = useState(false);
+	const isDesktop = useRespond(context.theme.breakpoints.md);
+
+	// Treat the slideout as closed on desktop when it's hidden there, since hide-desktop hides the dialog but showModal() would leave the page inert
+	// Note: Overlay closes the dialog when this turns false, and the dialog's onClose then resets isOpen
+	// Note: hide-desktop uses the same md breakpoint
+	const isVisible = isOpen && !(hideDesktop && isDesktop);
 
 	// Get default attributes for slideout
 	const width = options?.width ?? config.values.width;
@@ -65,11 +74,11 @@ export const Slideout = (props: SlideoutProps) => {
 	return (
 		<>
 			<Button
-				className={'slideout-button'}
+				className={`slideout-button${slideoutClass}`}
 				label={options.label}
 				onClick={() => setIsOpen(true)}
 				aria-controls={id}
-				aria-expanded={isOpen}
+				aria-expanded={isVisible}
 				aria-haspopup={'dialog'}
 				aria-label={`Open ${options.label}`}
 			>
@@ -78,8 +87,8 @@ export const Slideout = (props: SlideoutProps) => {
 
 			<Overlay
 				id={id}
-				className={`slideout slideout-${orientation} slideout-${direction}`}
-				isOpen={isOpen}
+				className={`slideout slideout-${orientation} slideout-${direction}${slideoutClass}`}
+				isOpen={isVisible}
 				onClose={() => setIsOpen(false)}
 				aria-labelledby={title}
 				style={{ width }}
