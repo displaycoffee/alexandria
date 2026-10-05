@@ -1,0 +1,39 @@
+/* Styles */
+import './styles/index.scss';
+
+/* Components */
+import { List } from '@/components/blocks/Blocks';
+import { Dropdown } from '@/components/dropdown/Dropdown';
+
+export default function Index() {
+	return (
+		<div className="index margin-trim">
+			<h2>Home</h2>
+
+			<p>This is an index page.</p>
+
+			<Dropdown buttonLabel={'Label'}>
+				<List>
+					<li>Item 1</li>
+					<li>Item 2</li>
+					<li>Item 3</li>
+					<li>Item 4</li>
+				</List>
+			</Dropdown>
+
+			<List>
+				<li>Item 1</li>
+				<li>Item 2</li>
+				<li>Item 3</li>
+				<li>Item 4</li>
+			</List>
+
+			<List variant={'ol'}>
+				<li>Item 1</li>
+				<li>Item 2</li>
+				<li>Item 3</li>
+				<li>Item 4</li>
+			</List>
+		</div>
+	);
+}
