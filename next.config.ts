@@ -1,18 +1,8 @@
 /* Packages */
-import type { NextConfig } from 'next';
-import path from 'path';
+import { createNextConfig } from '@displaycoffee/alexandria/next';
 
-/* Shared workspace folder (C:\Users\adria\projects) that holds node_modules and package-lock.json */
-const workspaceRoot = path.join(__dirname, '..');
-
-const nextConfig: NextConfig = {
-	reactCompiler: true,
-	/* @displaycoffee/scripts ships TypeScript source. Workspace packages are compiled automatically locally, but on Vercel it's installed from npm into node_modules, which Next.js doesn't compile unless listed here */
-	transpilePackages: ['@displaycoffee/scripts'],
-	outputFileTracingRoot: workspaceRoot,
-	turbopack: {
-		root: workspaceRoot,
-	},
-};
+/* Shared Alexandria settings (React Compiler, typed routes, workspace root, transpiled @displaycoffee packages, Sass load path) */
+/* Note: add project-specific options as the second argument, e.g. createNextConfig(__dirname, { images: { ... } }) */
+const nextConfig = createNextConfig(__dirname);
 
 export default nextConfig;

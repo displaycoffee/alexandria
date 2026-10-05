@@ -1,7 +1,11 @@
+/* Packages */
+import type { Route } from 'next';
+
 /* Scripts */
 import type { NavigationFlatItemType, NavigationMapType, NavigationMapItemType, NavigationMapItemOptionsType } from './navigation-types';
 
 export const navigationUtils = {
+	// Note: urls are typed as Route for typedRoutes. They're built from keys at runtime, so TypeScript can't check them; keep keys in sync with app/ folders
 	create: (data: NavigationMapItemOptionsType) => {
 		const { children, key, label, includeInSitemap = true, isRoute = true, showInNav = true, url } = data;
 
@@ -12,7 +16,7 @@ export const navigationUtils = {
 			isRoute: isRoute,
 			label: label,
 			showInNav: showInNav,
-			url: url ? url : `/${key}`,
+			url: (url ? url : `/${key}`) as Route,
 		};
 
 		// Add children if available
@@ -27,7 +31,7 @@ export const navigationUtils = {
 
 				modified[child] = {
 					...current,
-					url: isDefaultUrl ? `${navigationItem.url}/${current.id}` : current.url,
+					url: isDefaultUrl ? (`${navigationItem.url}/${current.id}` as Route) : current.url,
 				};
 			});
 
@@ -38,9 +42,8 @@ export const navigationUtils = {
 		return { [key]: navigationItem };
 	},
 	get: {
-		// includeHidden is only meant for the sitemap routes script in @displaycoffee/burmecia, which needs every route (including
-		// showInNav: false ones) to build the sitemap; leave it off everywhere else so the nav UI
-		// keeps filtering those out.
+		// includeHidden is only meant for app/sitemap.ts, which needs every route (including showInNav: false ones)
+		// to build the sitemap; leave it off everywhere else so the nav UI keeps filtering those out.
 		list: (data: NavigationMapType, includeHidden = false): NavigationFlatItemType[] => {
 			return Object.keys(data)
 				.filter((dataKey) => includeHidden || data[dataKey].showInNav)

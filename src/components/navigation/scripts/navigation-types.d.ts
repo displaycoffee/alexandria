@@ -1,4 +1,5 @@
 /* Packages */
+import type { Route } from 'next';
 import type { ReactNode } from 'react';
 
 /* Type definitions */
@@ -19,7 +20,7 @@ type NavigationItemComponent = {
 type NavigationLinkComponent = {
 	className: string;
 	disableTransition: boolean;
-	href: string;
+	href: Route;
 	label: string;
 };
 
@@ -30,7 +31,7 @@ type NavigationFlatItem = {
 	isRoute: boolean;
 	label: string;
 	showInNav: boolean;
-	url: string;
+	url: Route;
 };
 
 type NavigationMapItem = {
@@ -40,7 +41,7 @@ type NavigationMapItem = {
 	isRoute: boolean;
 	label: string;
 	showInNav: boolean;
-	url: string;
+	url: Route;
 };
 
 type NavigationMap = {

@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 
 /* Scripts */
 import type { SectionProps } from './scripts/blocks-types';
-import { useFormattedId } from '@/_core/scripts/hooks';
+import { useFormattedId } from '@displaycoffee/scripts/hooks';
 import { context } from '@/context/scripts/context';
 import { blocks } from './scripts/blocks';
 

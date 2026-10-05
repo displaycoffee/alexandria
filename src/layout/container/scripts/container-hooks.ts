@@ -1,4 +1,5 @@
 /* Packages */
+import type { Route } from 'next';
 import type { MouseEvent, RefObject } from 'react';
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
@@ -78,7 +79,7 @@ export const useViewTransition = () => {
 		resolveNavigation.current = null;
 	}, [pathname]);
 
-	return (e: MouseEvent<HTMLElement>, target: string | (() => void)) => {
+	return (e: MouseEvent<HTMLElement>, target: Route | (() => void)) => {
 		const isUrl = typeof target === 'string';
 
 		if (!document.startViewTransition || e.ctrlKey || e.metaKey || e.shiftKey || (isUrl && target === pathname)) {
@@ -88,6 +89,7 @@ export const useViewTransition = () => {
 
 			const contentEl = document.querySelector('.content') as HTMLElement;
 			if (contentEl) contentEl.style.viewTransitionName = 'page-content';
+			let newContentEl: HTMLElement | null = null;
 
 			void document
 				.startViewTransition(async () => {
@@ -105,6 +107,11 @@ export const useViewTransition = () => {
 						flushSync(() => target());
 					}
 
+					// Moving between route groups swaps the group layout, so .content is a new element that needs the name too
+					// Note: without it, the old snapshot has nothing to transition to and the page swaps instantly
+					newContentEl = document.querySelector('.content');
+					if (newContentEl && newContentEl !== contentEl) newContentEl.style.viewTransitionName = 'page-content';
+
 					// Wait for visible images that haven't loaded, so the content doesn't change size mid-transition
 					const pendingImages = [...document.querySelectorAll<HTMLImageElement>('.content img')].filter((img) => {
 						return !img.complete && img.getBoundingClientRect().top < window.innerHeight;
@@ -121,6 +128,7 @@ export const useViewTransition = () => {
 				})
 				.finished.finally(() => {
 					if (contentEl) contentEl.style.viewTransitionName = '';
+					if (newContentEl) newContentEl.style.viewTransitionName = '';
 				});
 		}
 	};

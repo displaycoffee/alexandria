@@ -9,9 +9,9 @@ import type { NavigationComponentProps, NavigationItemComponentProps } from './s
 import { navigationUtils } from './scripts/navigation-utils';
 
 /* Components */
-import { LinkExternal, List } from '../blocks/Blocks';
-import { Dropdown } from '../dropdown/Dropdown';
 import { NavigationLink } from './NavigationClient';
+import { LinkExternal, List } from '@/components/blocks/Blocks';
+import { Dropdown } from '@/components/dropdown/Dropdown';
 
 export const Navigation = (props: NavigationComponentProps) => {
 	const { data, disableTransition, hideMobile, label } = props;

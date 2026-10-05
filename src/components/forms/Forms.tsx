@@ -20,8 +20,8 @@ import type {
 import { forms } from './scripts/forms';
 
 /* Components */
-import { Alert } from '../alert/Alert';
-import { Icon } from '../icons/Icons';
+import { Alert } from '@/components/alert/Alert';
+import { Icon } from '@/components/icons/Icons';
 
 export const Button = (props: ButtonProps) => {
 	const { children, className: propClassName, hideLabel = false, label, type = 'button', variant = 'primary', ...rest } = props;
@@ -103,9 +103,7 @@ export const FormField = (props: FormFieldProps) => {
 				</div>
 			)}
 
-			<div className="form-field-control">
-				{children}
-			</div>
+			<div className="form-field-control">{children}</div>
 		</Tag>
 	);
 };

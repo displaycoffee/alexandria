@@ -1,6 +1,5 @@
 /* Packages */
 import type { Metadata } from 'next';
-//import Link from 'next/link';
 
 /* Components */
 import { Image } from '@/components/image/Image';

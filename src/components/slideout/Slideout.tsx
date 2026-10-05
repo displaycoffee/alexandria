@@ -13,9 +13,9 @@ import { context } from '@/context/scripts/context';
 import { slideout } from './scripts/slideout';
 
 /* Components */
-import { Button } from '../forms/Forms';
-import { Icon } from '../icons/Icons';
-import { Overlay } from '../overlay/Overlay';
+import { Button } from '@/components/forms/Forms';
+import { Icon } from '@/components/icons/Icons';
+import { Overlay } from '@/components/overlay/Overlay';
 
 export const Slideout = (props: SlideoutProps) => {
 	const { children, options } = props;
