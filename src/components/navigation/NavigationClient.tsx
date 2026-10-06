@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 /* Scripts */
 import type { NavigationLinkComponentProps } from './scripts/navigation-types';
-import { useViewTransition } from '@/layout/container/scripts/container-hooks';
+import { useViewTransition } from '@displaycoffee/scripts/hooks-next';
 
 export const NavigationLink = (props: NavigationLinkComponentProps) => {
 	const { className, disableTransition, href, label } = props;

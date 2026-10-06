@@ -5,7 +5,7 @@ import { useRef } from 'react';
 
 /* Scripts */
 import type { ContainerBodyProps, ContainerMainProps } from './scripts/container-types';
-import { useAvailableMinHeight, useBodyClass } from './scripts/container-hooks';
+import { useAvailableMinHeight, useBodyClass } from '@displaycoffee/scripts/hooks-next';
 
 export const ContainerBody = (props: ContainerBodyProps) => {
 	const { defaultPrefix } = props;

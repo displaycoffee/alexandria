@@ -35,7 +35,7 @@
 	},
 	"dependencies": {
 		"@displaycoffee/alexandria": "^1.0.0",
-		"@displaycoffee/scripts": "^2.0.0",
+		"@displaycoffee/scripts": "^2.1.0",
 		"@iconify/react": "^6.0.2",
 		"next": "16.3.8",
 		"react": "^19.3.0",
