@@ -60,7 +60,7 @@ export const PageFourClient = () => {
 
 			<Input id={'input-04'} label={'Input 04'} description={description} />
 
-			<Input id={'input-05'} label={'Input 05'} placeholder={placeholder} error={error} description={description} />
+			<Input id={'input-05'} hasClose={true} label={'Input 05'} placeholder={placeholder} error={error} description={description} />
 
 			<Select id={'select-01'} label={'Select 01'} error={error} description={description}>
 				<option value="option-01">Option 01</option>
@@ -68,7 +68,15 @@ export const PageFourClient = () => {
 				<option value="option-03">Option 03</option>
 			</Select>
 
-			<Textarea id={'textarea-01'} label={'Textarea 01'} placeholder={placeholder} error={error} description={description} rows={3} />
+			<Textarea
+				id={'textarea-01'}
+				hasClose={true}
+				label={'Textarea 01'}
+				placeholder={placeholder}
+				error={error}
+				description={description}
+				rows={3}
+			/>
 
 			<FormActions>
 				<Button label={'Primary Button with Children'}>

@@ -28,26 +28,28 @@ export const Container = (props: ContainerProps) => {
 	};
 
 	return (
-		<div className="container">
-			<ContainerBody defaultPrefix={'index'} />
+		<div id="index" tabIndex={-1}>
+			<div className="container">
+				<ContainerBody defaultPrefix={'index'} />
 
-			<a href="#main-content" className="skip-link sr-only no-decoration">
-				Skip to main content
-			</a>
+				<a href="#main-content" className="skip-link sr-only no-decoration">
+					Skip to main content
+				</a>
 
-			<Header />
+				<Header />
 
-			<Navigation data={navigationHeader} hideMobile={true} label={'Header Navigation'} />
+				<Navigation data={navigationHeader} hideMobile={true} label={'Header Navigation'} />
 
-			<Slideout options={slideoutOptions}>
-				<Navigation data={navigationHeader} disableTransition={true} label={'Mobile Navigation'} />
-			</Slideout>
+				<Slideout options={slideoutOptions}>
+					<Navigation data={navigationHeader} disableTransition={true} label={'Mobile Navigation'} />
+				</Slideout>
 
-			<ContainerMain>{children}</ContainerMain>
+				<ContainerMain>{children}</ContainerMain>
 
-			<Footer />
+				<Footer />
 
-			<ButtonScroll target={'#index'} label={'Scroll to top'} />
+				<ButtonScroll target={'#index'} label={'Scroll to top'} />
+			</div>
 		</div>
 	);
 };

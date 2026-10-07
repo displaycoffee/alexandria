@@ -21,6 +21,7 @@ import { forms } from './scripts/forms';
 
 /* Components */
 import { Alert } from '@/components/alert/Alert';
+import { FieldClose } from './FormsClient';
 import { Icon } from '@/components/icons/Icons';
 
 export const Button = (props: ButtonProps) => {
@@ -55,8 +56,9 @@ export const Choice = (props: ChoiceProps) => {
 };
 
 export const Form = (props: FormProps) => {
-	const { children, className: propClassName, ...rest } = props;
-	const className = forms.build.className(`form margin-trim`, propClassName);
+	const { children, className: propClassName, hasMarginTrim = true, ...rest } = props;
+	const formClass = hasMarginTrim ? `form margin-trim` : `form`;
+	const className = forms.build.className(formClass, propClassName);
 
 	return (
 		<form className={className} {...rest}>
@@ -109,7 +111,18 @@ export const FormField = (props: FormFieldProps) => {
 };
 
 export const Input = (props: InputProps) => {
-	const { className: propClassName, description = '', error = '', hideLabel = false, id, label, required = false, type = 'text', ...rest } = props;
+	const {
+		className: propClassName,
+		description = '',
+		error = '',
+		hasClose = false,
+		hideLabel = false,
+		id,
+		label,
+		required = false,
+		type = 'text',
+		...rest
+	} = props;
 	const freeformFields = ['email', 'number', 'password', 'search', 'tel', 'text', 'url'];
 	const inputClass = `input input-${type}${freeformFields.includes(type) ? ' input-freeform' : ''}`;
 	const className = forms.build.className(inputClass, propClassName, rest?.disabled);
@@ -123,7 +136,9 @@ export const Input = (props: InputProps) => {
 
 	return (
 		<FormField {...formFieldAttributes}>
-			<input {...inputAttributes} type={type} {...rest} />
+			<FieldClose defaultValue={rest.defaultValue} hasClose={hasClose} value={rest.value}>
+				<input {...inputAttributes} type={type} {...rest} />
+			</FieldClose>
 			<FormFieldDetails description={description} descriptionId={descriptionId} error={error} errorId={errorId} />
 		</FormField>
 	);
@@ -154,7 +169,17 @@ export const Select = (props: SelectProps) => {
 };
 
 export const Textarea = (props: TextareaProps) => {
-	const { className: propClassName, description = '', error = '', hideLabel = false, id, label, required = false, ...rest } = props;
+	const {
+		className: propClassName,
+		description = '',
+		error = '',
+		hasClose = false,
+		hideLabel = false,
+		id,
+		label,
+		required = false,
+		...rest
+	} = props;
 	const className = forms.build.className(`textarea`, propClassName, rest?.disabled);
 	const { descriptionId, errorId } = forms.get.ids({ description, error, id });
 
@@ -166,7 +191,9 @@ export const Textarea = (props: TextareaProps) => {
 
 	return (
 		<FormField {...formFieldAttributes}>
-			<textarea {...textareaAttributes} {...rest} />
+			<FieldClose defaultValue={rest.defaultValue} hasClose={hasClose} value={rest.value}>
+				<textarea {...textareaAttributes} {...rest} />
+			</FieldClose>
 			<FormFieldDetails description={description} descriptionId={descriptionId} error={error} errorId={errorId} />
 		</FormField>
 	);
