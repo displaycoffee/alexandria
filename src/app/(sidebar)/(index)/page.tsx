@@ -5,10 +5,13 @@ import './styles/index.scss';
 import { List } from '@/components/blocks/Blocks';
 import { Dropdown } from '@/components/dropdown/Dropdown';
 
+/* Page title */
+const title = 'Home';
+
 export default function Index() {
 	return (
 		<div className="index margin-trim">
-			<h2>Home</h2>
+			<h2>{title}</h2>
 
 			<p>This is an index page.</p>
 

@@ -32,7 +32,7 @@ export default function PageTwo() {
 						{navigationList.children.map((nav) => {
 							return (
 								<li key={nav.url}>
-									<Link href={`${nav.url}`}>{nav.label}</Link>
+									<Link href={nav.url}>{nav.label}</Link>
 								</li>
 							);
 						})}
