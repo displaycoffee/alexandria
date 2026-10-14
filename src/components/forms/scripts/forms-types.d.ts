@@ -1,5 +1,6 @@
 /* Packages */
 import type {
+	AnchorHTMLAttributes,
 	ButtonHTMLAttributes,
 	FormHTMLAttributes,
 	InputHTMLAttributes,
@@ -8,6 +9,7 @@ import type {
 	SelectHTMLAttributes,
 	TextareaHTMLAttributes,
 } from 'react';
+import type { Route } from 'next';
 
 /* Shared field concerns for form controls with a label / error / required state */
 type Field = {
@@ -30,6 +32,16 @@ type Button = {
 	type?: 'button' | 'reset' | 'submit';
 	variant?: 'link' | 'primary' | 'secondary' | 'tertiary' | 'unstyled';
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'className' | 'type' | 'variant'>;
+
+type ButtonLink = {
+	children?: ReactNode;
+	className?: string;
+	hideLabel?: boolean;
+	label: string;
+	ref?: Ref<HTMLAnchorElement>;
+	url: Route;
+	variant?: 'link' | 'primary' | 'secondary' | 'tertiary' | 'unstyled';
+} & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'children' | 'className' | 'href' | 'variant'>;
 
 type ButtonScroll = Omit<Button, 'onClick' | 'type' | 'variant'> & {
 	offset?: number;
@@ -133,6 +145,8 @@ type Toggle = {
 
 /* Export prop types */
 export type ButtonProps = Button;
+
+export type ButtonLinkProps = ButtonLink;
 
 export type ButtonScrollProps = ButtonScroll;
 

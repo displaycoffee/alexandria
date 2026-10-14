@@ -7,9 +7,6 @@ import Link from 'next/link';
 /* Scripts */
 import { context } from '@/context/scripts/context';
 
-/* Components */
-import { ThemeToggle } from '@/components/theme-toggle/ThemeToggle';
-
 export const Header = () => {
 	const { variables } = context;
 
@@ -20,8 +17,6 @@ export const Header = () => {
 					{variables.site.name}
 				</Link>
 			</h1>
-
-			<ThemeToggle />
 		</header>
 	);
 };

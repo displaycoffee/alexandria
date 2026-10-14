@@ -16,6 +16,7 @@ import { Header } from '@/layout/header/Header';
 import { Content } from '@/layout/content/Content';
 import { Sidebar } from '@/layout/sidebar/Sidebar';
 import { Footer } from '@/layout/footer/Footer';
+import { ThemeToggle } from '@/components/theme-toggle/ThemeToggle';
 
 export const Container = (props: ContainerProps) => {
 	const { children } = props;
@@ -50,6 +51,8 @@ export const Container = (props: ContainerProps) => {
 
 				<ButtonScroll target={'#index'} label={'Scroll to top'} />
 			</div>
+
+			<ThemeToggle />
 		</div>
 	);
 };

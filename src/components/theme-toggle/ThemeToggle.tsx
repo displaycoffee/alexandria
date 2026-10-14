@@ -1,5 +1,8 @@
 'use client';
 
+/* Styles */
+import './styles/theme-toggle.scss';
+
 /* Packages */
 import type { ThemeMode } from '@displaycoffee/tokens';
 import { useSyncExternalStore } from 'react';
@@ -9,7 +12,7 @@ import { settings } from '@/_core/data/settings';
 import { themeToggle } from './scripts/theme-toggle';
 
 /* Components */
-import { Toggle } from '@/components/forms/Forms';
+import { Icon } from '@/components/icons/Icons';
 
 /* Theme toggle
    Note: everything for the toggle lives in this folder, so it can be removed by deleting it, <ThemeToggle /> and <ThemeToggleScript />.
@@ -54,6 +57,7 @@ const subscribe = (onChange: () => void) => {
 export const ThemeToggle = () => {
 	// Note: the server can't know the visitor's theme, so it renders the default theme and the browser corrects it right after hydration
 	const theme = useSyncExternalStore(subscribe, getTheme, () => settings.theme.default);
+	const toggleId = 'theme-toggle-choice';
 
 	// Flip the theme, save it, and apply it immediately (the observer picks up the new data-theme)
 	const toggleTheme = () => {
@@ -62,5 +66,13 @@ export const ThemeToggle = () => {
 		document.documentElement.setAttribute('data-theme', next);
 	};
 
-	return <Toggle active={theme === 'dark'} id={'theme-toggle'} label={`${theme === 'dark' ? 'Dark' : 'Light'} mode`} onChange={toggleTheme} />;
+	// Note: the label stays "Dark mode", since the switch's checked state tells screen readers whether it's on, and CSS shows the sun or moon icon from :checked
+	return (
+		<label className="theme-toggle pointer" htmlFor={toggleId}>
+			<span className="theme-toggle-label sr-only">Dark mode</span>
+			<input id={toggleId} className="theme-toggle-choice sr-only" checked={theme === 'dark'} onChange={toggleTheme} role="switch" type="checkbox" name="theme-toggle" />
+			<Icon name={'sun'} size={'2xl'} />
+			<Icon name={'moon'} size={'2xl'} />
+		</label>
+	);
 };
