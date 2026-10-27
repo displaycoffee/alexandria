@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 /* Type definitions */
 type NavigationComponent = {
 	data: NavigationMap | NavigationItem[];
+	direction?: 'horizontal' | 'vertical';
 	disableTransition?: boolean;
 	hideMobile?: boolean;
 	label: string;

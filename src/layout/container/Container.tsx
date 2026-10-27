@@ -42,7 +42,7 @@ export const Container = (props: ContainerProps) => {
 				<Navigation data={navigationHeader} hideMobile={true} label={'Header Navigation'} />
 
 				<Slideout options={slideoutOptions}>
-					<Navigation data={navigationHeader} disableTransition={true} label={'Mobile Navigation'} />
+					<Navigation data={navigationHeader} direction={'vertical'} disableTransition={true} label={'Mobile Navigation'} />
 				</Slideout>
 
 				<ContainerMain>{children}</ContainerMain>
